@@ -1,0 +1,107 @@
+name: qt-snap-test
+title: Qt SNAP test
+version: "1.0"
+base: core22
+summary: Qt SNAP test
+description: test snap for Qt
+
+grade: stable
+confinement: classic
+
+parts:
+
+  qt:
+    source: http://code.qt.io/qt/qt5.git
+    # source-tag: "v6.2.4"
+    source-tag: "v6.8.1"
+    source-depth: 1
+    source-submodules: [qtbase,qtwayland]
+    plugin: cmake
+    cmake-generator: Ninja
+    build-attributes:
+    - enable-patchelf
+    cmake-parameters:
+    - -DCMAKE_INSTALL_PREFIX=/
+    - -DQT_GENERATE_SBOM=OFF
+    build-packages:
+    - libegl-dev
+    - libgl-dev
+    - libharfbuzz-dev
+    - libjpeg-dev
+    - libpng-dev
+    - libvulkan-dev
+    - libwayland-dev
+    # xcb QPA (Qt Platform Abstraction) platform plugin
+    - libfontconfig1-dev
+    - libfreetype6-dev
+    - libx11-dev
+    - libx11-xcb-dev
+    - libxext-dev
+    - libxfixes-dev
+    - libxi-dev
+    - libxrender-dev
+    - libxcb1-dev
+    - libxcb-glx0-dev
+    - libxcb-keysyms1-dev
+    - libxcb-image0-dev
+    - libxcb-shm0-dev
+    - libxcb-icccm4-dev
+    - libxcb-sync-dev
+    - libxcb-xfixes0-dev
+    - libxcb-shape0-dev
+    - libxcb-randr0-dev
+    - libxcb-render-util0-dev
+    - libxkbcommon-dev
+    - libxkbcommon-x11-dev
+    stage-packages:
+    - libegl1
+    - libfontconfig1
+    - libfreetype6
+    - libgl1
+    - libglvnd0
+    - libglx0
+    - libgraphite2-3
+    - libharfbuzz0b
+    - libjpeg-turbo8
+    - libpcre2-16-0
+    - libpng16-16
+    - libwayland-cursor0
+    - libwayland-egl1
+    - libx11-6
+    - libx11-xcb1
+    - libxau6
+    - libxcb-glx0
+    - libxcb-icccm4
+    - libxcb-image0
+    - libxcb-keysyms1
+    - libxcb-randr0
+    - libxcb-render-util0
+    - libxcb-render0
+    - libxcb-shape0
+    - libxcb-shm0
+    - libxcb-sync1
+    - libxcb-util1
+    - libxcb-xfixes0
+    - libxcb-xkb1
+    - libxcb1
+    - libxdmcp6
+    - libxkbcommon-x11-0
+    - libxkbcommon0
+
+  mini-cmake-qt:
+    after: [qt]
+    source: https://github.com/euler0/mini-cmake-qt.git
+    source-branch: main
+    source-depth: 1
+    plugin: cmake
+    cmake-generator: Ninja
+    build-attributes:
+    - enable-patchelf
+    cmake-parameters:
+    - -DCMAKE_INSTALL_PREFIX=/
+
+apps:
+  qt-snap-test:
+    command: usr/bin/example
+    environment:
+      QT_QPA_PLATFORM: wayland;xcb
