@@ -21,7 +21,7 @@ parts:
     build-attributes:
     - enable-patchelf
     cmake-parameters:
-    - -DCMAKE_INSTALL_PREFIX=/
+    - -DCMAKE_INSTALL_PREFIX=/usr
     - -DQT_GENERATE_SBOM=OFF
     build-packages:
     - libegl-dev
@@ -98,7 +98,7 @@ parts:
     build-attributes:
     - enable-patchelf
     cmake-parameters:
-    - -DCMAKE_INSTALL_PREFIX=/
+    - -DCMAKE_INSTALL_PREFIX=/usr
 
 apps:
   qt-snap-test:
