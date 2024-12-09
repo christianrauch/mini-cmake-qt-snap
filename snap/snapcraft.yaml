@@ -1,7 +1,7 @@
 name: qt-snap-test
 title: Qt SNAP test
 version: "1.0"
-base: core22
+base: core24
 summary: Qt SNAP test
 description: test snap for Qt
 
