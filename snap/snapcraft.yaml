@@ -18,11 +18,13 @@ parts:
     source-submodules: [qtbase,qtwayland]
     plugin: cmake
     cmake-generator: Ninja
-    build-attributes:
-    - enable-patchelf
+    # build-attributes:
+    # - enable-patchelf
     cmake-parameters:
     - -DCMAKE_INSTALL_PREFIX=/usr
     - -DQT_GENERATE_SBOM=OFF
+    build-environment:
+    - LDFLAGS: "-Wl,-dynamic-linker=/snap/core24/current/lib64/ld-linux-x86-64.so.2 -Wl,-rpath=\\$ORIGIN/../lib:\\$ORIGIN/../lib/x86_64-linux-gnu:/snap/core24/current/lib/x86_64-linux-gnu"
     build-packages:
     - libegl-dev
     - libgl-dev
@@ -95,10 +97,12 @@ parts:
     source-depth: 1
     plugin: cmake
     cmake-generator: Ninja
-    build-attributes:
-    - enable-patchelf
+    # build-attributes:
+    # - enable-patchelf
     cmake-parameters:
     - -DCMAKE_INSTALL_PREFIX=/usr
+    build-environment:
+    - LDFLAGS: "-Wl,-dynamic-linker=/snap/core24/current/lib64/ld-linux-x86-64.so.2 -Wl,-rpath=\\$ORIGIN/../lib:\\$ORIGIN/../lib/${CRAFT_ARCH_TRIPLET_BUILD_FOR}:/snap/core24/current/lib/${CRAFT_ARCH_TRIPLET_BUILD_FOR}"
 
 apps:
   qt-snap-test:
