@@ -27,6 +27,8 @@ jobs:
 
       - uses: snapcore/action-build@v1
         id: build-snap
+        with:
+          snapcraft-args: "--verbose"
 
       - run: sudo snap install --dangerous --classic ${{ steps.build-snap.outputs.snap }}
 
