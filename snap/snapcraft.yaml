@@ -23,7 +23,7 @@ parts:
     cmake-parameters:
     - -DCMAKE_INSTALL_PREFIX=/usr
     - -DQT_GENERATE_SBOM=OFF
-    - -DCMAKE_INSTALL_RPATH=\$ORIGIN/../lib:\$ORIGIN/../lib/${CRAFT_ARCH_TRIPLET_BUILD_FOR}:/snap/core24/current/lib/${CRAFT_ARCH_TRIPLET_BUILD_FOR}
+    - -DCMAKE_INSTALL_RPATH=\$ORIGIN/../lib:\$ORIGIN/../lib/${CRAFT_ARCH_TRIPLET_BUILD_FOR}:\$ORIGIN/../../lib/${CRAFT_ARCH_TRIPLET_BUILD_FOR}:/snap/core24/current/lib/${CRAFT_ARCH_TRIPLET_BUILD_FOR}
     build-environment:
     - LDFLAGS: "-Wl,-dynamic-linker=/snap/core24/current/lib64/ld-linux-x86-64.so.2"
     build-packages:
@@ -102,7 +102,7 @@ parts:
     # - enable-patchelf
     cmake-parameters:
     - -DCMAKE_INSTALL_PREFIX=/usr
-    - -DCMAKE_INSTALL_RPATH=\$ORIGIN/../lib:\$ORIGIN/../lib/${CRAFT_ARCH_TRIPLET_BUILD_FOR}:/snap/core24/current/lib/${CRAFT_ARCH_TRIPLET_BUILD_FOR}
+    - -DCMAKE_INSTALL_RPATH=\$ORIGIN/../lib:\$ORIGIN/../lib/${CRAFT_ARCH_TRIPLET_BUILD_FOR}:\$ORIGIN/../../lib/${CRAFT_ARCH_TRIPLET_BUILD_FOR}:/snap/core24/current/lib/${CRAFT_ARCH_TRIPLET_BUILD_FOR}
     build-environment:
     - LDFLAGS: "-Wl,-dynamic-linker=/snap/core24/current/lib64/ld-linux-x86-64.so.2"
 
