@@ -110,4 +110,5 @@ apps:
   qt-snap-test:
     command: usr/bin/example
     environment:
+      LD_LIBRARY_PATH: ${SNAP}/lib:${SNAP}/usr/lib/${CRAFT_ARCH_TRIPLET_BUILD_FOR}
       QT_QPA_PLATFORM: wayland;xcb
