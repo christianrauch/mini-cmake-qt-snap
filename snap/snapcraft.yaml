@@ -10,6 +10,20 @@ confinement: classic
 
 parts:
 
+  ext-patchelf:
+    plugin: nil
+    stage-packages:
+    - libpcre2-8-0
+    - libexpat1
+    - libbz2-1.0
+    - libbrotli1
+    - libbsd0
+    - libmd0
+    build-attributes:
+    - enable-patchelf
+    stage:
+    - usr/lib/${CRAFT_ARCH_TRIPLET_BUILD_FOR}/
+
   qt:
     source: http://code.qt.io/qt/qt5.git
     # source-tag: "v6.2.4"
