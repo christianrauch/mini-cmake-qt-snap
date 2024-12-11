@@ -50,8 +50,6 @@ parts:
     source-submodules: [qtbase,qtwayland]
     plugin: cmake
     cmake-generator: Ninja
-    # build-attributes:
-    # - enable-patchelf
     cmake-parameters:
     - -DCMAKE_INSTALL_PREFIX=/usr
     - -DQT_GENERATE_SBOM=OFF
@@ -130,8 +128,6 @@ parts:
     source-depth: 1
     plugin: cmake
     cmake-generator: Ninja
-    # build-attributes:
-    # - enable-patchelf
     cmake-parameters:
     - -DCMAKE_INSTALL_PREFIX=/usr
     - -DCMAKE_INSTALL_RPATH=\$ORIGIN/../lib:\$ORIGIN/../lib/${CRAFT_ARCH_TRIPLET_BUILD_FOR}:\$ORIGIN/../../lib/${CRAFT_ARCH_TRIPLET_BUILD_FOR}:\$ORIGIN:\$ORIGIN/${CRAFT_ARCH_TRIPLET_BUILD_FOR}:/snap/core24/current/lib/${CRAFT_ARCH_TRIPLET_BUILD_FOR}
