@@ -10,6 +10,24 @@ confinement: classic
 
 parts:
 
+  mesa-patchelf:
+    plugin: nil
+    stage-packages:
+    - libgl1-mesa-dri
+    build-attributes:
+    - enable-patchelf
+    stage:
+    - -usr/lib/${CRAFT_ARCH_TRIPLET_BUILD_FOR}/dri
+
+  mesa-no-patchelf:
+    plugin: nil
+    stage-packages:
+    - libgl1-mesa-dri
+    build-attributes:
+    - no-patchelf
+    stage:
+    - usr/lib/${CRAFT_ARCH_TRIPLET_BUILD_FOR}/dri
+
   ext-patchelf:
     plugin: nil
     stage-packages:
